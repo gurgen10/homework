@@ -1,0 +1,31 @@
+ [
+      {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Rain",
+        "email": "john20@yandex.ru",
+        "age": 25,
+        "gender": "female",
+        "profileImage": "Images/girl.jpg"
+        
+      },
+      {
+        "id": 2,
+        "firstName": "Kevin",
+        "lastName": "MCDonals",
+        "email": "kevin88@yandex.ru",
+        "age": 29,
+        "gender": "male",
+        "profileImage": "Images/boy.jpg"
+      },
+      {
+        "id": 2,
+        "firstName": "Mark",
+        "lastName": "Zuckerberg",
+        "email": "zuckerberg@yandex.ru",
+        "age": 40,
+        "gender": "male",
+        "profileImage": "Images/mark.jpg"
+      }
+    ]
+  
