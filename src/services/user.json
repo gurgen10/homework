@@ -1,9 +1,8 @@
  [
       {
         "id": 1,
-        "firstName": "John",
+        "firstName": "Jessika",
         "lastName": "Rain",
-        "email": "john20@yandex.ru",
         "age": 25,
         "gender": "female",
         "profileImage": "Images/girl.jpg"
@@ -13,19 +12,73 @@
         "id": 2,
         "firstName": "Kevin",
         "lastName": "MCDonals",
-        "email": "kevin88@yandex.ru",
         "age": 29,
         "gender": "male",
         "profileImage": "Images/boy.jpg"
       },
       {
-        "id": 2,
+        "id": 3,
         "firstName": "Mark",
         "lastName": "Zuckerberg",
-        "email": "zuckerberg@yandex.ru",
         "age": 40,
         "gender": "male",
         "profileImage": "Images/mark.jpg"
+      },
+      {
+        "id": 4,
+        "firstName": "Mary",
+        "lastName": "Simpson",
+        "age": 40,
+        "gender": "femail",
+        "profileImage": "Images/mary_s.jpg"
+      },
+      {
+        "id": 5,
+        "firstName": "Brad",
+        "lastName": "Belmond",
+        "age": 40,
+        "gender": "male",
+        "profileImage": "Images/brad_b.jpg"
+      },
+      {
+        "id": 6,
+        "firstName": "Hillary",
+        "lastName": "Clinthon",
+        "age": 40,
+        "gender": "femail",
+        "profileImage": "Images/hillary.jpg"
+      },
+      {
+        "id": 7,
+        "firstName": "Anton",
+        "lastName": "Belov",
+        "age": 40,
+        "gender": "male",
+        "profileImage": "Images/anton_b.jpg"
+      },
+      {
+        "id": 8,
+        "firstName": "Bruce",
+        "lastName": "Williams",
+        "age": 40,
+        "gender": "male",
+        "profileImage": "Images/bruce.jpg"
+      },
+      {
+        "id": 9,
+        "firstName": "Michael",
+        "lastName": "Cole",
+        "age": 40,
+        "gender": "male",
+        "profileImage": "Images/cole.jpg"
+      },
+      {
+        "id": 10,
+        "firstName": "Nicol",
+        "lastName": "Pashinyan",
+        "age": 40,
+        "gender": "male",
+        "profileImage": "Images/nicol.jpg"
       }
     ]
   
