@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Container, Card, ListGroup} from 'react-bootstrap';
-import {  withRouter, Link } from 'react-router-dom';
-
-
+import {Nav, Row, Col, Container, Card, ListGroup} from 'react-bootstrap';
+import {  withRouter } from 'react-router-dom';
 import './UserDetailPage.css';
 import { withUserDetailPage } from '../../hoc';
 import Loading from '../../Loading';
@@ -18,14 +16,18 @@ import Loading from '../../Loading';
         const user = getUser(userId);
         this.setState({user});        
 
-        const users = getUsers();
-        // const lastThreeUsers = users.reduceRight((accumulator, currentValue, index, array, initialValue) => {
-        //     if(index < 3) {
-        //         accumulator.push(currentValue)
-        //     }
+        const users = getUsers().filter(item => item.id !== user.id);
+        const lastThreeUsers = [];
+        
+        users.reduceRight((acc, currEl, index) => {
+            if(index > users.length - 4) {                
+                lastThreeUsers.push(currEl)
+            }
+            
+            return currEl
 
-        // },[user] )
-        // this.setState({lastThreeUsers});
+        }, [] );        
+        this.setState({lastThreeUsers });
      }
      
 
@@ -33,14 +35,13 @@ import Loading from '../../Loading';
         const { user, lastThreeUsers } = this.state;
 
         if(!user) return <Loading />
-        const castTreeUsers = lastThreeUsers.map(user => {
+        const lastTreeUserElements = lastThreeUsers.map(user => {
             return (
-                <Link to={`user/${user.id}`}>
-                    <ListGroup.Item key={user.id}>
+                <Nav.Link   key={user.id} href={`/user/${user.id}`} > 
+                    <ListGroup.Item >
                         <img style={{width: '200px'}} src={'/' + user.profileImage} alt={user.lastName + ' ' + user.lastName}/>
                     </ListGroup.Item>
-                </Link>
-               
+                </Nav.Link>   
             )
         })
              
@@ -54,20 +55,24 @@ import Loading from '../../Loading';
                 </Col>
                 <Col>
                     <Card style={{ width: '18rem' }}>
-                    <ListGroup variant="flush">
-                        <ListGroup.Item>Firstname: {user.firstName}</ListGroup.Item>
-                        <ListGroup.Item>Lasttname: {user.lastName}</ListGroup.Item>
-                        <ListGroup.Item>Age: {user.age}</ListGroup.Item>
-                        <ListGroup.Item>Gender: {user.gender}</ListGroup.Item>
-                    </ListGroup>
+                        <ListGroup variant="flush">
+                            <ListGroup.Item>Firstname: {user.firstName}</ListGroup.Item>
+                            <ListGroup.Item>Lasttname: {user.lastName}</ListGroup.Item>
+                            <ListGroup.Item>Age: {user.age}</ListGroup.Item>
+                            <ListGroup.Item>Gender: {user.gender}</ListGroup.Item>
+                        </ListGroup>
                     </Card>
                 </Col>
                 </Row>
                 <Row>
-                    <ListGroup variant="flush">
-                        { castTreeUsers }
+                    <Col>
+                    <ListGroup horizontal>
+                        <Nav  className="flex-row">
+                        { lastTreeUserElements }
+                        </Nav>
+                        
                     </ListGroup>
-
+                    </Col>
                 </Row>
             </Container>
         )

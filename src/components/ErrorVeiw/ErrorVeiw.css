@@ -1,0 +1,22 @@
+.error-indicator {
+  background: rgb(105, 105, 105);
+  border-radius: 5px;
+  margin: 30px;
+  padding: 20px 10px;
+  min-height: 200px;
+  text-align: center;
+  color: rgb(238, 204, 12);
+}
+.error-indicator .error-header {
+  font-size: 28px;
+  font-weight: bold;
+  display: block;
+}
+.error-indicator  .error-message{
+  display: block;
+  margin-top: 15px;
+  font-size: 18px;
+}
+.error-icon {
+  width: 120px;
+}

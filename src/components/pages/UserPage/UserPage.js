@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import { Nav, Container} from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-
+import { withRouter } from 'react-router-dom';
 import './UserPage.css';
 import { withUserList } from '../../hoc';
 import Loading from '../../Loading';
 
  class UserPage extends Component {
      state = {
-         users: null
+         users: null,
+         activeUserId: null
      }
+
      componentDidMount() {
-         const users = this.props.getUsers();
-         this.setState({users});
-         
-         
-         this.props.receveFirstUserId(users[0].id)
+        const { receveFirstUserId } = this.props;
+        const users = this.props.getUsers();
+        const firstId = users[0].id;
+        
+        this.setState({ users });
+        
+        receveFirstUserId(firstId);
      }
 
     render() {
         const { users } = this.state;
-        
+        const { location:{pathname} } = this.props;
+ 
         if(!users) {
             return <Loading/>
         }
@@ -28,19 +32,22 @@ import Loading from '../../Loading';
         const navLinks = users.map(user => {
             
             return ( 
-            <Nav.Link style={{border: '1px solid black'}} key={user.id} href={`/user/${user.id}`} >{ user.firstName + ' ' + user.lastName }</Nav.Link>
-            //<Nav.Link key={user.id} as={NavLink} exact to={`/user/${user.id}`} className="nav-link">{ user.firstName + ' ' + user.lastName }</Nav.Link>
-            )
-
+                <Nav.Link   
+                    key={user.id} 
+                    href={`/user/${user.id}`}
+                    className='nav-link '> 
+                        { user.firstName + ' ' + user.lastName }
+                </Nav.Link>   
+            );
         })
         return (
             <Container>
-                <Nav defaultActiveKey={`/user/${navLinks[0].id}`} className="flex-column">
+                <Nav activeKey={pathname}  className="flex-column">
                     {navLinks}
-                </Nav>
+                </Nav>                   
             </Container>
-        )
+        );
     }
 }
 
-export default withUserList(UserPage)
+export default withRouter(withUserList(UserPage))
