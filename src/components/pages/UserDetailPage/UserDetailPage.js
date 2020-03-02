@@ -55,10 +55,10 @@ import Loading from '../../Loading';
                 <Col>
                     <Card style={{ width: '18rem' }}>
                         <ListGroup variant="flush">
-                            <ListGroup.Item>Firstname: {user.firstName}</ListGroup.Item>
-                            <ListGroup.Item>Lasttname: {user.lastName}</ListGroup.Item>
-                            <ListGroup.Item>Age: {user.age}</ListGroup.Item>
-                            <ListGroup.Item>Gender: {user.gender}</ListGroup.Item>
+                            <ListGroup.Item><i>Firstname:</i> <b>{user.firstName}</b></ListGroup.Item>
+                            <ListGroup.Item><i>Lasttname:</i> <b>{user.lastName}</b></ListGroup.Item>
+                            <ListGroup.Item><i>Age:</i> <b>{user.age}</b></ListGroup.Item>
+                            <ListGroup.Item><i>Gender:</i> <b>{user.gender}</b></ListGroup.Item>
                         </ListGroup>
                     </Card>
                 </Col>
