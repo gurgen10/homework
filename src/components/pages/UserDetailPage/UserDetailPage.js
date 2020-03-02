@@ -17,16 +17,15 @@ import Loading from '../../Loading';
         this.setState({user});        
 
         const users = getUsers().filter(item => item.id !== user.id);
-        const lastThreeUsers = [];
-        
-        users.reduceRight((acc, currEl, index) => {
+        const lastThreeUsers = users.reduceRight((acc, currEl, index) => {
             if(index > users.length - 4) {                
-                lastThreeUsers.push(currEl)
+                acc.push(currEl)
             }
             
-            return currEl
+            return acc;
 
-        }, [] );        
+        }, [] );   
+        
         this.setState({lastThreeUsers });
      }
      
