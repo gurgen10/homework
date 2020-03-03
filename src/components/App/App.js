@@ -34,12 +34,10 @@ class App extends Component {
                 </Col>
                 <Col md="auto">
                   <Switch>
-                    {
-                      userId ?
-                        <Route exact path="/" >
-                          {<Redirect to={`/user/${this.state.userId}`} />}
-                        </Route>
-                        : null}
+                    <Route exact path="/" >
+                      { () =>  userId ? <Redirect to={`/user/${this.state.userId}`} />   : null }
+                    </Route>
+                      
                     <Route exact path="/user/:userId" component={UserDetail} />
                   </Switch>
                 </Col>

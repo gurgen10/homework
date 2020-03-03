@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Container} from 'react-bootstrap';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './UserPage.css';
 import { withUserList } from '../../hoc';
 import Loading from '../../Loading';
@@ -8,7 +8,7 @@ import Loading from '../../Loading';
  class UserPage extends Component {
      state = {
          users: null,
-         activeUserId: null
+         selectedItemId: null
      }
 
      componentDidMount() {
@@ -17,8 +17,17 @@ import Loading from '../../Loading';
         const firstId = users[0].id;
         
         this.setState({ users });
+        this.setState({ selectedItemId: firstId });
+        
+        
         
         receveFirstUserId(firstId);
+     }
+     selectItem = (selectedItemId) => {
+         
+         
+         this.setState({selectedItemId});
+         console.log(this.state.selectedItemId);
      }
 
     render() {
@@ -28,16 +37,18 @@ import Loading from '../../Loading';
         if(!users) {
             return <Loading/>
         }
+        console.log(this.state.selectedItemId);
+        
 
         const navLinks = users.map(user => {
-            
             return ( 
-                <Nav.Link   
+                <Link   
                     key={user.id} 
-                    href={`/user/${user.id}`}
-                    className='nav-link '> 
+                    to={`/user/${user.id}`}
+                    onClick={() => this.selectItem(user.id)}
+                    className={`nav-link  ${this.state.selectedItemId === user.id ? 'selected' : ''}`}> 
                         { user.firstName + ' ' + user.lastName }
-                </Nav.Link>   
+                </Link>   
             );
         })
         return (
