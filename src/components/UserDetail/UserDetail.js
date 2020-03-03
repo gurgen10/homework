@@ -9,15 +9,19 @@ import { Button, Container} from 'react-bootstrap';
 class UserDetail extends Component {
     state={
         user: null,
-        iSUserMoreDetail: false
+        iSUserMoreDetail: false,
+        userId: null
     }
   
     componentDidMount() {
-        const { getUser, match:{params:{userId}}} = this.props;
+        //const { getUser, match:{params:{userId}}} = this.props;
+        const { getUser, userId } = this.props;
 
         const user = getUser(userId);
+        console.log('userId', userId);
+
        
-        this.setState({user})
+        this.setState({user, userId})
     }
 
     showUserMoreDetail = () => {
@@ -53,4 +57,4 @@ const Content = (props) => {
     )
 }
 
-export default withUserDetail(withRouter(UserDetail));
+export default withUserDetail(UserDetail);

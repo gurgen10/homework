@@ -37,6 +37,7 @@ import Loading from '../../Loading';
         const lastTreeUserElements = lastThreeUsers.map(user => {
             return (
                 <Nav.Link   key={user.id} href={`/user/${user.id}`} > 
+                
                     <ListGroup.Item >
                         <img style={{width: '200px'}} src={'/' + user.profileImage} alt={user.lastName + ' ' + user.lastName}/>
                     </ListGroup.Item>

@@ -16,18 +16,15 @@ import Loading from '../../Loading';
         const users = this.props.getUsers();
         const firstId = users[0].id;
         
-        this.setState({ users });
-        this.setState({ selectedItemId: firstId });
-        
-        
-        
+        this.setState({ users, selectedItemId: firstId });
+
         receveFirstUserId(firstId);
      }
+
      selectItem = (selectedItemId) => {
          
-         
-         this.setState({selectedItemId});
-         console.log(this.state.selectedItemId);
+        this.props.receveFirstUserId(selectedItemId)
+        this.setState({selectedItemId});
      }
 
     render() {
@@ -36,16 +33,14 @@ import Loading from '../../Loading';
  
         if(!users) {
             return <Loading/>
-        }
-        console.log(this.state.selectedItemId);
-        
+        }        
 
         const navLinks = users.map(user => {
             return ( 
-                <Link   
+                <Link
                     key={user.id} 
                     to={`/user/${user.id}`}
-                    onClick={() => this.selectItem(user.id)}
+                    onClick={ () => this.selectItem(user.id) }
                     className={`nav-link  ${this.state.selectedItemId === user.id ? 'selected' : ''}`}> 
                         { user.firstName + ' ' + user.lastName }
                 </Link>   
@@ -53,7 +48,7 @@ import Loading from '../../Loading';
         })
         return (
             <Container>
-                <Nav activeKey={pathname}  className="flex-column">
+                <Nav   className="flex-column">  {/*activeKey={pathname} */}
                     {navLinks}
                 </Nav>                   
             </Container>
