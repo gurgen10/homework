@@ -15,13 +15,13 @@ class App extends Component {
   }
   userData = new UserService();
 
-  receveFirstUserId = (userId) => {
+  receveUserId = (userId) => {
     this.setState({ userId });
+    
   }
 
   render() {
     const { userId } = this.state;
-    
     
     return (
       <ErrorBoundary>
@@ -30,7 +30,7 @@ class App extends Component {
             <Container>
               <Row>
                 <Col xs lg="2">
-                  <UserPage receveFirstUserId={this.receveFirstUserId}  />
+                  <UserPage receveUserId={this.receveUserId}  />
                 </Col>
                 <Col md="auto">
                   <Switch>
@@ -38,14 +38,14 @@ class App extends Component {
                       { () =>  userId ? <Redirect to={`/user/${ userId }`} />   : null }
                     </Route>
                       
-                    <Route path="/user/:userId"  >
-                      { () =>  <UserDetail userId={userId}/> }
+                    <Route path="/user/:userId" component={UserDetail} >
+                     
                     </Route>
                   </Switch>
                 </Col>
               </Row>
             </Container>
-          </Router>
+          </Router> 
         </MyProvider>
       </ErrorBoundary>
     );

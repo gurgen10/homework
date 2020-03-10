@@ -12,19 +12,20 @@ import Loading from '../../Loading';
      }
 
      componentDidMount() {
-        const { receveFirstUserId } = this.props;
+        const { receveUserId, match:{userId} } = this.props;
         const users = this.props.getUsers();
-        const firstId = users[0].id;
+        const firstId = userId; //users[2].id;
         
         this.setState({ users, selectedItemId: firstId });
 
-        receveFirstUserId(firstId);
+        receveUserId(firstId);
      }
 
      selectItem = (selectedItemId) => {
          
-        this.props.receveFirstUserId(selectedItemId)
+        this.props.receveUserId(selectedItemId)
         this.setState({selectedItemId});
+        
      }
 
     render() {

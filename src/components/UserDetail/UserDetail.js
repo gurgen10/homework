@@ -15,13 +15,25 @@ class UserDetail extends Component {
   
     componentDidMount() {
         //const { getUser, match:{params:{userId}}} = this.props;
-        const { getUser, userId } = this.props;
+        const { getUser, match:{params:{userId}} } = this.props;
 
         const user = getUser(userId);
         console.log('userId', userId);
 
        
-        this.setState({user, userId})
+        this.setState({user,userId})
+    }
+    componentDidUpdate(prevProps) {
+        const {match:{params:{userId}}} = prevProps;
+        if (this.props.match.params.userId !== userId) {
+            const { getUser, match:{params:{userId}} } = this.props;
+
+            const user = getUser(userId);
+            console.log('userId', userId);
+
+       
+        this.setState({user,userId})
+          }
     }
 
     showUserMoreDetail = () => {
@@ -31,7 +43,7 @@ class UserDetail extends Component {
 
     render() {
         const { user, iSUserMoreDetail } = this.state;
-
+        
         if(!user) return <Loading />
         
         return (

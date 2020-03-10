@@ -11,7 +11,8 @@ import Loading from '../../Loading';
          lastThreeUsers: []
      }
      componentDidMount() {
-        const { getUser, getUsers,  match:{params:{userId}} } = this.props;
+        const { getUser, getUsers, userId } = this.props; // match:{params:{userId}}
+        console.log(userId)
 
         const user = getUser(userId);
         this.setState({user});        
